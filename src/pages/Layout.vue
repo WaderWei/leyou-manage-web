@@ -17,7 +17,7 @@
               <img src="../assets/2.jpeg">
             </v-list-tile-avatar>
             <v-list-tile-content>
-              <v-list-tile-title>虎哥</v-list-tile-title>
+              <v-list-tile-title>wade</v-list-tile-title>
             </v-list-tile-content>
           </v-list-tile>
         </v-list>
@@ -63,12 +63,12 @@
       </v-btn>
       <!-- 切换黑暗主题 -->
       <v-flex xs1>
-      <v-switch
-        :label="dark ? '暗黑' : '明亮'"
-        v-model="dark"
-        color="dark"
-        hide-details
-      />
+        <v-switch
+          :label="dark ? '暗黑' : '明亮'"
+          v-model="dark"
+          color="dark"
+          hide-details
+        />
       </v-flex>
       <!-- 顶部导航标题 -->
       <v-flex xs3></v-flex>
@@ -85,11 +85,11 @@
       </v-btn>
     </v-toolbar>
     <v-content>
-          <v-breadcrumbs>
-            <v-icon slot="divider">chevron_right</v-icon>
-            <v-breadcrumbs-item>{{item1}}</v-breadcrumbs-item>
-            <v-breadcrumbs-item>{{item2}}</v-breadcrumbs-item>
-          </v-breadcrumbs>
+      <v-breadcrumbs>
+        <v-icon slot="divider">chevron_right</v-icon>
+        <v-breadcrumbs-item>{{item1}}</v-breadcrumbs-item>
+        <v-breadcrumbs-item>{{item2}}</v-breadcrumbs-item>
+      </v-breadcrumbs>
       <div>
         <router-view/>
       </div>
@@ -106,30 +106,29 @@
         dark: false,// 是否暗黑主题
         drawer: true,// 左侧导航是否隐藏
         miniVariant: false,// 左侧导航是否收起
-        title: '乐优商城后台管理',// 顶部导航条名称,
-        menuMap:{}
+        title: '后台管理',// 顶部导航条名称,
+        menuMap: {}
       }
     },
     computed: {
       items() {
         return menus;
       },
-      item1(){
+      item1() {
         const arr = this.$route.path.split("/");
         return this.menuMap[arr[1]].name;
       },
-      item2(){
+      item2() {
         const arr = this.$route.path.split("/");
         return this.menuMap[arr[1]][arr[2]];
       }
     },
     name: 'App',
-    watch: {
-    },
-    created(){
+    watch: {},
+    created() {
       menus.forEach(m => {
         const p1 = m.path.slice(1);
-        this.menuMap[p1] = {name:m.title};
+        this.menuMap[p1] = {name: m.title};
         m.items.forEach(i => {
           this.menuMap[p1][i.path.slice(1)] = i.title;
         })
